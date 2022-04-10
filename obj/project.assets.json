@@ -9655,11 +9655,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pauld\\Projects\\CA\\NewsReport\\NewsReportAPIService.csproj",
+      "projectUniqueName": "C:\\Users\\pauld\\Projects\\CA\\NewsReportAPIService\\NewsReportAPIService.csproj",
       "projectName": "NewsReportAPIService",
-      "projectPath": "C:\\Users\\pauld\\Projects\\CA\\NewsReport\\NewsReportAPIService.csproj",
+      "projectPath": "C:\\Users\\pauld\\Projects\\CA\\NewsReportAPIService\\NewsReportAPIService.csproj",
       "packagesPath": "C:\\Users\\pauld\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pauld\\Projects\\CA\\NewsReport\\obj\\",
+      "outputPath": "C:\\Users\\pauld\\Projects\\CA\\NewsReportAPIService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pauld\\AppData\\Roaming\\NuGet\\NuGet.Config",

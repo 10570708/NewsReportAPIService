@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RNOs7MIBo3XzUr/mDaYRzpOu2JUDrGQWYYt1tUcSq3PpaQxVZ+Lz+G2vSIPcuYOqLAh5lUbmZrBUzdTV/pyfAQ==",
+  "dgSpecHash": "BYM6YKlPbNk5QZINgPxJR1E/nhAD6J1nGVDtLsJgdQvrK+Nzhc9I+qUi1/EzFgdlrQpEUVG+YyKMR6GFs0BuPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pauld\\Projects\\CA\\NewsReport\\NewsReportAPIService.csproj",
+  "projectFilePath": "C:\\Users\\pauld\\Projects\\CA\\NewsReportAPIService\\NewsReportAPIService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pauld\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pauld\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

@@ -79,11 +79,9 @@ namespace NewsReportAPIService.Controllers
         [HttpPost]
         public async Task<ActionResult<Report>> PostReport(Report report)
         {
-            report.CreatedBy = new Guid();
-            report.IsPublished = true;
+            if (report.IsPublished) report.PublishedDate = DateTime.Now;
             report.CreatedDate = DateTime.Now;
             report.UpdatedDate = DateTime.Now;
-            report.PublishedDate = DateTime.Now;
 
             _context.Report.Add(report);
             await _context.SaveChangesAsync();
