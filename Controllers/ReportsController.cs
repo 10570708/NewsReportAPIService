@@ -52,8 +52,22 @@ namespace NewsReportAPIService.Controllers
             {
                 return BadRequest();
             }
+            
+            var report_orig = await _context.Report.FindAsync(id);
+            
+            report_orig.Title = report.Title;
+            report_orig.Content = report.Content;
+            
+            if (!report_orig.IsPublished && report.IsPublished)
+            {
+            	report_orig.PublishedDate = DateTime.Now;
+            	report_orig.IsPublished = true;
+            }
 
-            _context.Entry(report).State = EntityState.Modified;
+            report_orig.UpdatedDate = DateTime.Now;
+            
+
+            _context.Entry(report_orig).State = EntityState.Modified;
 
             try
             {
