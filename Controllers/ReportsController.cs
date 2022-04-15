@@ -22,12 +22,69 @@ namespace NewsReportAPIService.Controllers
             _context = context;
         }
 
-        // GET: api/Reports
+/*        // GET: api/Reports
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Report>>> GetReport()
-        {
-            return await _context.Report.ToListAsync();
+        {	
+		    return await _context.Report.ToListAsync();
+
         }
+*/
+
+        // GET: api/Reports
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Report>>> GetReport(Guid? guid, int? category = 0)
+        {	
+        
+        	    var guidIsEmpty = (guid == null || guid.Value == Guid.Empty);
+	  	   //var guidIsEmpty = guid == new(Guid).Empty;
+	  	
+        	    if (category == 0)
+        	    {
+        	    	if (!guidIsEmpty)
+        	    	{
+			    	return await _context.Report.Where(x => x.CreatedBy == guid).ToListAsync();        	    
+			}
+			else
+			{
+			    	return await _context.Report.ToListAsync();        	    			
+			}
+		    }
+		    else{
+   		        Report.CategoryType cat = (Report.CategoryType)category;  
+
+			if (!guidIsEmpty)
+			{
+				    return await _context.Report.Where(x => x.Category == cat & x.CreatedBy == guid).ToListAsync();
+			}
+			else
+			{
+				   return await _context.Report.Where(x => x.Category == cat).ToListAsync();			
+		    	}
+		    }
+		    
+		    
+/*		    	if (category != 0 && !guidIsEmpty)
+			    {
+				    Report.CategoryType cat = (Report.CategoryType)category;  
+				    return await _context.Report.Where(x => x.Category == cat & x.CreatedBy == guid).ToListAsync();
+			    }
+			   
+			    if (category != 0)
+			    {
+				    Report.CategoryType cat = (Report.CategoryType)category;  
+				    return await _context.Report.Where(x => x.Category == cat).ToListAsync();
+			    }
+			    
+			    if (!guidIsEmpty)
+			    {
+				    Report.CategoryType cat = (Report.CategoryType)category;  
+				    return await _context.Report.Where(x => x.CreatedBy == guid).ToListAsync();
+			    }
+			   return await _context.Report.ToListAsync();        
+*/			    
+        }
+
 
         // GET: api/Reports/5
         [HttpGet("{id}")]
@@ -57,6 +114,7 @@ namespace NewsReportAPIService.Controllers
             
             report_orig.Title = report.Title;
             report_orig.Content = report.Content;
+            report_orig.Category = report.Category;
             
             if (!report_orig.IsPublished && report.IsPublished)
             {
