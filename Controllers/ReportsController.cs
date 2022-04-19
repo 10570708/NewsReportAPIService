@@ -33,21 +33,33 @@ namespace NewsReportAPIService.Controllers
 
         // GET: api/Reports
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Report>>> GetReport(Guid? guid, int? category = 0)
+        public async Task<ActionResult<IEnumerable<Report>>> GetReport(Guid? guid, int? category = 0, bool desc = true)
         {	
         
         	    var guidIsEmpty = (guid == null || guid.Value == Guid.Empty);
-	  	   //var guidIsEmpty = guid == new(Guid).Empty;
+	  	
+
+			// Baseline for select for the reports	  		
+			var reports = from r in _context.Report
+					   select r;	  		
+					   
+			// The search should be ordered by updateddate descending 
+			if (desc) 
+			{
+				reports = reports.OrderByDescending(s => s.UpdatedDate);
+			}
+	  	
 	  	
         	    if (category == 0)
         	    {
         	    	if (!guidIsEmpty)
         	    	{
-			    	return await _context.Report.Where(x => x.CreatedBy == guid).ToListAsync();        	    
+        	    		reports = reports.Where(x => x.CreatedBy == guid);
+			    	//return await _context.Report.Where(x => x.CreatedBy == guid).ToListAsync();        	    
 			}
 			else
 			{
-			    	return await _context.Report.ToListAsync();        	    			
+			    	//return await _context.Report.OrderByDescending(s => s.UpdatedDate).ToListAsync();        	    			
 			}
 		    }
 		    else{
@@ -55,13 +67,17 @@ namespace NewsReportAPIService.Controllers
 
 			if (!guidIsEmpty)
 			{
-				    return await _context.Report.Where(x => x.Category == cat & x.CreatedBy == guid).ToListAsync();
+				 	reports = reports.Where(x => x.Category == cat & x.CreatedBy == guid); 	
+				    //return await _context.Report.Where(x => x.Category == cat & x.CreatedBy == guid).ToListAsync();
 			}
 			else
 			{
-				   return await _context.Report.Where(x => x.Category == cat).ToListAsync();			
+					reports = reports.Where(x => x.Category == cat); 	
+				  // return await _context.Report.Where(x => x.Category == cat).ToListAsync();			
 		    	}
 		    }
+		    
+		    return await reports.ToListAsync();
 		    
 		    
 /*		    	if (category != 0 && !guidIsEmpty)
