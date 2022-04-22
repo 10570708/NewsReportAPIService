@@ -161,6 +161,27 @@ namespace NewsReportAPIService.Controllers
 
             return NoContent();
         }
+        
+        
+       // DELETE: api/Reports/5
+        [HttpPut, Route("Publish/{id}")]
+        public async Task<IActionResult> PutReport(int id)
+        {
+            var report = await _context.Report.FindAsync(id);
+            if (report == null)
+            {
+                return NotFound();
+            }
+
+	    report.IsPublished = true;
+	    report.PublishedDate = DateTime.Now;
+	    
+	    _context.Entry(report).State = EntityState.Modified;	    
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+        
 
         // POST: api/Reports
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
