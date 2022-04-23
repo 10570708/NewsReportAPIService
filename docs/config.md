@@ -1,4 +1,4 @@
-# RapidNewsWebApp: Configuration
+# NewsReportAPIService: Configuration
 
 
 ## Application URL

@@ -1,3 +1,4 @@
+# NewsReportAPIService: Project Creation
 # Create a New Project in Visual Studio 2022
 
 
@@ -35,7 +36,8 @@
 	- Click Add
 	- Controller Name default entered : 'ReportsController' 
 	- Click Add
-	- Wait 
+	
+The bones of the API are now created.
 	
 	
 [Back to Index](index.md)

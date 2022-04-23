@@ -1,4 +1,4 @@
-# RapidNewsReportWebApp: Setup
+# NewsReportAPIService: Setup
 
 
 ## Clone the Project Files
@@ -52,7 +52,7 @@ Clone the files locally using either
 
 ## Run the Application 
 
-- The application can now ne run, however there are configuration settings to consider before doing so. 
+- The application can now be run, however there are configuration settings to consider before doing so. 
  
 	[Configuration setting & pre-requisites](config.md)
 
