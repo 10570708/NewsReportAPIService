@@ -5,19 +5,16 @@ namespace NewsReportAPIService.Models
     public class Report
     {
         public int Id { get; set; }
-        
-
         [   Required(ErrorMessage="Your News Report Title must be between 10 and 150 characters."), 
             MinLength(10, ErrorMessage = "Your News Report Title must be between 10 and 150 characters."), 
             MaxLength(150, ErrorMessage = "Your News Report Title must be between 10 and 150 characters.")
         ] 
-        public string Title { get; set; }
-
+        public string Title { get; set; } = "";
         [   Required(ErrorMessage="Your News Report must be between 50 and 5000 characters."), 
             MinLength(50, ErrorMessage = "Your News Report must be between 50 and 5000 characters."), 
             MaxLength(5000,ErrorMessage = "Your News Report must be between 50 and 5000 characters.")
         ]
-        public string Content { get; set; }
+        public string Content { get; set; } = "";
 
         [DataType(DataType.DateTime)]
         public DateTime CreatedDate { get; set; }
